@@ -1,0 +1,14 @@
+[hooks]
+pre-commit = "rustup run nightly -- cargo fmt && cargo clippy --all-targets --all-features"
+pre-push = """cargo test --all-features -- --test-threads 3 && \
+if !([ -z \"$(cargo clippy --all-targets --all-features --quiet --message-format=short 2>&1)\" ]); then
+  echo \"Please fix clippy suggestions.\";
+  exit 1;
+fi && \
+if !([ -z \"$(git status --porcelain=v1 2>/dev/null)\" ]); then
+  echo \"Working directory not clean.\";
+  exit 1;
+fi"""
+
+[logging]
+verbose = true

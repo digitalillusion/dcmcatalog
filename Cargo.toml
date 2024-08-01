@@ -1,0 +1,18 @@
+[package]
+name = "dcmcatalog"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+rayon = "1.10"
+fs_extra = "1.3"
+thiserror = "1"
+dicom = "0.7"
+tantivy = "0.22"
+log = "0.4"
+env_logger = "0.11"
+urlencoding = "2.1"
+
+[dev-dependencies]
+rusty-hook = "0.11"
